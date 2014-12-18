@@ -2,6 +2,7 @@
 # get_initial_condition finds an apocenter near a given time in Gyr
 # Output xyz,vxyz
 # near 1 Gyr: 0.867027 Gyr (gyrfalcon 0.886719 kpc/(km/s))): -3.28175615422,-3.72848811704,-16.8038012273,60.1208755963,24.7191445761,-19.3648412218
+#near 400 Myr: 0.374311 Gyr (gyrfalcon 0.382812 kpc/(km/s))): 13.3714540144,5.30894304813,9.79206089165,-46.7421924594,-7.86106523579,66.5276091319
 
 # Simulate stream
 mkking out=oph.nemo nbody=10000 W0=2. mass=20000 r_t=0.07 WD_units=t
@@ -9,10 +10,15 @@ mkking out=oph.nemo nbody=10000 W0=2. mass=20000 r_t=0.07 WD_units=t
 
 # shift it
 snapshift oph.nemo oph_shifted.nemo rshift= vshift=
+# E.g., for 400 Myr, tstop=0.382812
+snapshift oph.nemo oph_shifted_400Myr.nemo rshift=13.3714540144,5.30894304813,9.79206089165 vshift=-46.7421924594,-7.86106523579,66.5276091319
 # E.g., for 1 Gyr tstop=0.886719
 snapshift oph.nemo oph_shifted.nemo rshift=-3.28175615422,-3.72848811704,-16.8038012273 vshift=60.1208755963,24.7191445761,-19.3648412218
 
-gyrfalcON in=oph_shifted.nemo out=oph_evol.nemo tstop=0.886719 eps=0.0015 step=0.00390625 kmax=6 Nlev=10 fac=0.01 accname=PowSphwCut+MiyamotoNagai+NFW accpars=0,957.790220141,1.8,1.9#0,293296.33419,3.0,0.28#0,16.0,159.339301299
+#400 Myr
+gyrfalcON in=oph_shifted_400Myr.nemo out=oph_evol_400Myr.nemo tstop=0.382812 eps=0.0015 step=0.00390625 kmax=8 Nlev=10 fac=0.01 accname=PowSphwCut+MiyamotoNagai+NFW accpars=0,957.790220141,1.8,1.9#0,293296.33419,3.0,0.28#0,16.0,159.339301299
+#1 Gyr
+gyrfalcON in=oph_shifted.nemo out=oph_evol.nemo tstop=0.886719 eps=0.0015 step=0.00390625 kmax=8 Nlev=10 fac=0.01 accname=PowSphwCut+MiyamotoNagai+NFW accpars=0,957.790220141,1.8,1.9#0,293296.33419,3.0,0.28#0,16.0,159.339301299
 
 s2a oph_evol.nemo oph_evol.dat
 
