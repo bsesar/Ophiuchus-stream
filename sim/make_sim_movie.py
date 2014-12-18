@@ -25,7 +25,7 @@ def make_sim_movie(proj='xz',comov=False,skippng=False,
         basefilename+= 'xz_'
         moviefilename+= '_xz'
         x= data[:,1]
-        y= data[:,2]
+        y= data[:,3]
         if comov:
             basefilename+= 'comov_'
             moviefilename+= '_comov'
@@ -39,8 +39,8 @@ def make_sim_movie(proj='xz',comov=False,skippng=False,
     elif proj.lower() == 'yz':
         basefilename+= 'yz_'
         moviefilename+= '_yz'
-        x= data[:,3]
-        y= data[:,2]
+        x= data[:,2]
+        y= data[:,3]
         if comov:
             basefilename+= 'comov_'
             moviefilename+= '_comov'
