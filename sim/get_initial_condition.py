@@ -19,14 +19,13 @@ def get_initial_condition(to):
     drs= rs-numpy.roll(rs,1)
     nearApo= (drs < 0.)*(numpy.roll(drs,1) > 0.)
     tsNearApo= ts[nearApo]
-    #Convert to gyrfalcon units
-    tsNearApo*= bovy_conversion.time_in_Gyr(vo,ro)/0.9777922212082034
+    tsNearApo*= bovy_conversion.time_in_Gyr(vo,ro)
     tfgf= numpy.amax(tsNearApo)
-    #Round to nearest 0.00390625
-    tfgf= round(tfgf/0.00390625)*0.00390625
-    tf= tfgf/bovy_conversion.time_in_Gyr(vo,ro)*0.9777922212082034
+    #Round to nearest 2.**-8.
+    tfgf= round(tfgf/2.**-8.)*2.**-8
+    tf= tfgf/bovy_conversion.time_in_Gyr(vo,ro)
     print 'Current: %s,%s,%s,%s,%s,%s' % (of.x()[0], of.y()[0], of.z(), -of.vx()[0], -of.vy()[0], -of.vz())
-    print 'At %g Gyr (gyrfalcon %g kpc/(km/s))): %s,%s,%s,%s,%s,%s' % (tf*bovy_conversion.time_in_Gyr(vo,ro),tfgf,of.x(tf)[0], of.y(tf)[0], of.z(tf), -of.vx(tf)[0], -of.vy(tf)[0], -of.vz(tf))
+    print 'At %g Gyr: %s,%s,%s,%s,%s,%s' % (tf*bovy_conversion.time_in_Gyr(vo,ro),of.x(tf)[0], of.y(tf)[0], of.z(tf), -of.vx(tf,use_physical=False)[0]*bovy_conversion.velocity_in_kpcGyr(vo,ro), -of.vy(tf,use_physical=False)[0]*bovy_conversion.velocity_in_kpcGyr(vo,ro), -of.vz(tf,use_physical=False)*bovy_conversion.velocity_in_kpcGyr(vo,ro))
     return None
 
 if __name__ == '__main__':
