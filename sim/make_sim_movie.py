@@ -12,11 +12,15 @@ def make_sim_movie(proj='xz',comov=False,skippng=False,
                    includeorbit=True):
     #Directories
     savedirpng= './movies/oph/pngs/'
-    basefilename= 'oph_evol_'
-    moviefilename= 'oph_evol'
+    timestr= '_1Gyr'
+#    timestr= ''
+#    massstr= '_lowmass'
+    massstr= ''
+    basefilename= 'oph%s_evol%s_' % (massstr,timestr)
+    moviefilename= 'oph%s_evol%s' % (massstr,timestr)
     #Read data
     #datafile= 'oph_evol_hitres.dat'
-    datafile= 'oph_evol.dat'
+    datafile= 'oph%s_evol%s.dat' % (massstr,timestr)
     print "Reading data ..."
     data= numpy.loadtxt(datafile,comments='#')
     print "Done reading data"
@@ -37,6 +41,7 @@ def make_sim_movie(proj='xz',comov=False,skippng=False,
         xlabel=r'$X\,(\mathrm{kpc})$'
         ylabel=r'$Z\,(\mathrm{kpc})$'
     elif proj.lower() == 'yz':
+        includeorbit= False #just to be sure
         basefilename+= 'yz_'
         moviefilename+= '_yz'
         x= data[:,2]
@@ -44,11 +49,11 @@ def make_sim_movie(proj='xz',comov=False,skippng=False,
         if comov:
             basefilename+= 'comov_'
             moviefilename+= '_comov'
-            xrange=[-12.,12.]
-            yrange=[-10.,10.]           
-        else:
-            xrange=[-30.,30.]
+            xrange=[-15.,15.]
             yrange=[-15.,15.]           
+        else:
+            xrange=[-18.,18.]
+            yrange=[-18.,18.]           
         xlabel=r'$Y\,(\mathrm{kpc})$'
         ylabel=r'$Z\,(\mathrm{kpc})$'
     elif proj.lower() == 'orbplane':
@@ -56,7 +61,7 @@ def make_sim_movie(proj='xz',comov=False,skippng=False,
         moviefilename+= '_orbplane'
         x= numpy.zeros_like(data[:,1])
         y= numpy.zeros_like(data[:,2])
-        nx= 10000
+        nx= 20000
         nt= len(x)/nx
         diff= numpy.empty(nt)
         if includeorbit:
@@ -177,15 +182,17 @@ def make_sim_movie(proj='xz',comov=False,skippng=False,
         if comov:
             basefilename+= 'comov_'
             moviefilename+= '_comov'
-            xrange=[-13.,13.]
-            yrange=[-13.,13.]           
+            xrange=[-2.,2.]
+            yrange=[-2.,2.]           
+#            xrange=[-4.,4.]
+#            yrange=[-4.,4.]           
         else:
             xrange=[-30.,30.]
             yrange=[-15.,15.]           
         xlabel=r'$X_{\mathrm{orb}}\,(\mathrm{kpc})$'
         ylabel=r'$Y_{\mathrm{orb}}\,(\mathrm{kpc})$'
     if not skippng:
-        nx= 10000
+        nx= 20000
         nt= len(x)/nx
         for ii in range(nt):
             plotx= x[ii*nx:(ii+1)*nx]
@@ -269,7 +276,7 @@ def make_sim_movie_aa(proj='aaarazap',comov=False,
         basefilename+= 'debris_'
         moviefilename+= '_debris'
     if not skippng:
-        nx= 10000
+        nx= 20000
         nt= len(glob.glob(os.path.join(snapaadir,
                                        'oph_evol_hitres_aa_*.dat')))
         if debris:
