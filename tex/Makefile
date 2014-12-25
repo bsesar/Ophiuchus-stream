@@ -12,8 +12,9 @@ apj:
 	./tmp_cp
 	$(RM) tmp_cp
 
-ms.pdf: ms.tex
+ms.pdf: ms.tex ms.bib
 	pdflatex $<
+	bibtex $(subst .tex,,$<)
 	pdflatex $<
 	pdflatex $<
 	- bash -c " ( grep Rerun $*.log && pdflatex $< ) || echo noRerun "
