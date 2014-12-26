@@ -24,7 +24,7 @@ ms.pdf: ms.tex ms.bib
 .PHONY: clean spotless apj
 
 clean:
-	$(RM) *.log *.aux *.dvi *.out *.bbl *Notes.bib
+	$(RM) *.log *.aux *.dvi *.out *.bbl *Notes.bib *.blg
 	$(RM) *~
 
 spotless: clean
