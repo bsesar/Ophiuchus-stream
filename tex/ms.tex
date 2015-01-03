@@ -24,7 +24,7 @@
 \author{Kenneth C.~Chambers\altaffilmark{9}} 
 %\author{L.~Denneau\altaffilmark{9}} 
 %\author{P.~Draper\altaffilmark{10}} 
-\author{H.~Flewelling\altaffilmark{9}} 
+\author{Heather Flewelling\altaffilmark{9}} 
 %\author{T.~Grav\altaffilmark{11}} 
 %\author{J.~N.~Heasley\altaffilmark{9}} 
 \author{Klaus W.~Hodapp\altaffilmark{9}} 
@@ -238,7 +238,7 @@ Even though the primary goal of spectroscopic observations was to obtain precise
 radial velocities, the wavelength range and the resolution of Hectochelle
 spectra are sufficient to allow estimates of element abundances.
 
-We determined stellar parameters from the continuum-normalised, radial
+We determined stellar parameters from the continuum-normalized, radial
 velocity-corrected spectra using the SMH code of \citet{cas14}, which is built
 on the MOOG code of \citet{sne73}. Kurucz $\alpha-$enhanced (0.4 dex) model
 atmospheres \citep{ck04} and a line list compiled from \citet{fre10} by
@@ -297,12 +297,12 @@ procedure.
 Having tied the positions for each object at one 2MASS and five USNO-B epochs to
 the PS1 astrometric reference frame, we can now check for any additional
 systematic uncertainties in the calibrated astrometry. We do so using the
-leave-one-out cross-validation. One of the six calibrated positions is witheld, 
+leave-one-out cross-validation. One of the six calibrated positions is withheld,
 and a straight line is fitted to the remaining five positions and the PS1
 position. The straight line fit (i.e., essentially a proper motion fit,
 neglecting the parallax) is then used to predict the position of an object at
-the witheld epoch. The difference between the witheld position and the predicted
-position is labeled as $\Delta RA$ or $\Delta Decl$.
+the withheld epoch. The difference between the withheld position and the
+predicted position is labeled as $\Delta RA$ or $\Delta Decl$.
 
 \begin{figure}
 \plotone{astrometric_residuals.pdf}
@@ -621,7 +621,7 @@ To efficiently explore the parameter space, we use the \citet{gw10} Affine
 Invariant Markov chain Monte Carlo (MCMC) Ensemble sampler as implemented in the
 {\em emcee} package\footnote{\url{http://dan.iel.fm/emcee/current/}} (v2.1,
 \citealt{fm12}). We use 1000 walkers and obtain convergence\footnote{We checked 
-for convergence of chains by examining the autocorrelation time of the chains
+for convergence of chains by examining the auto-correlation time of the chains
 per dimension.} after a short burn-in phase of 100 steps per walker. The chains 
 are then restarted around the best-fit value and evolved for another 4000 steps.
 We find that the marginal posterior distributions of parameters are quite
@@ -782,7 +782,7 @@ confirmed members contains only 14 stars, there is a possibility that one or two
 stars with incorrectly measured proper motions may bias the results. As an
 example, stream member ``rgb4'' is clearly an outlier in proper motion as it has
 $\mu_l\sim-30$ mas yr$^{-1}$, while the remaining members have $\mu_l\sim-6$ mas
-yr$^{-1}$. A visual inspection of digitized photographic plates has revelead
+yr$^{-1}$. A visual inspection of digitized photographic plates has revealed
 that ``rgb4'' is blended with a neighbor of similar brightness, which affects
 the measured position of the star and its proper motion.
 
@@ -1084,11 +1084,13 @@ significantly affect the results presented below.
 \plotone{orbit_XYZ.pdf}
 \caption{
 The orbit of the Ophiuchus stream in the past 370 Myr (about one orbital
-period), shown in the galactocentric Cartesian coordinate system. Note the
-pericenter passage at $t\approx-250$ Myr (solid square). Near this point in
-time, the stream was also passing through the disk ($Z\sim0$ kpc, see the top
-left panel) and was experiencing strong tidal forces due to disk shocking
-(see Figure~\ref{tidal_force}).
+period), shown in a right-handed galactocentric Cartesian coordinate system.
+In this coordinate system, the Sun is at $(X,Y,Z)=(8,0,0)$ kpc and the y-axis is
+positive towards galactic longitude $l=90\arcdeg$. Note the pericenter passage
+at $t\approx-250$ Myr (solid square). Near this point in time, the stream was
+also passing through the disk ($Z\sim0$ kpc, see the top left panel) and was 
+experiencing strong tidal forces due to disk shocking (see
+Figure~\ref{tidal_force}).
 \label{orbit_XYZ}}
 \end{figure}
 
