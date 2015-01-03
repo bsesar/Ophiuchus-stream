@@ -24,7 +24,7 @@
 \author{Kenneth C.~Chambers\altaffilmark{9}} 
 %\author{L.~Denneau\altaffilmark{9}} 
 %\author{P.~Draper\altaffilmark{10}} 
-%\author{H.~Flewelling\altaffilmark{9}} 
+\author{H.~Flewelling\altaffilmark{9}} 
 %\author{T.~Grav\altaffilmark{11}} 
 %\author{J.~N.~Heasley\altaffilmark{9}} 
 \author{Klaus W.~Hodapp\altaffilmark{9}} 
@@ -213,7 +213,7 @@ account for variations in the fiber throughput, the spectra were normalized
 before sky subtraction. The normalization factor was estimated using the
 strength of several night sky emission lines in the appropriate order. Sky
 subtraction was performed using the average of 20-30 sky fibers, using the
-method  devised by \citet{kop11}. A comparison of observed and laboratory
+method devised by \citet{kop11}. A comparison of observed and laboratory
 positions of sky emission lines did not reveal any significant offsets in
 wavelength calibration (i.e., no offsets greater than 0.5 km s$^{-1}$ at 5225
 \AA).
@@ -242,19 +242,19 @@ We determined stellar parameters from the continuum-normalised, radial
 velocity-corrected spectra using the SMH code of \citet{cas14}, which is built
 on the MOOG code of \citet{sne73}. Kurucz $\alpha-$enhanced (0.4 dex) model
 atmospheres \citep{ck04} and a line list compiled from \citet{fre10} by
-\citet{cas14} were used (see Table~\ref{lines}). First, effective temperatures
-were calculated from 2MASS photometry and color-temperature calibrations of
-\citet{ghb09} and spectroscopic temperatures were optimized around this value
-using the SMH code, by removing abundance trends with line excitation potential.
-Parameters of $\log g$ and ${\rm [Fe/H]}$ were determined using 14 Fe I and 2-3 
-Fe II lines to achieve ionization balance, and microturbulence was calculated by
-removing abundance trends with reduced equivalent width of the lines. Estimates 
-of the $\alpha-$enhancement were obtained using only the few available clean Mg,
-Ca and Ti (I and II) lines, which comprised a total of 6-8 lines per star. The
-abundances were measured from equivalent widths and the lines we used are listed
-in Table~\ref{lines}. Because Mg lines are strong and may be saturated, the
-values of ${\rm [Mg/Fe]}$ are significantly different than values of
-${\rm [Ca/Fe]}$ and ${\rm [Ti/Fe]}$.
+\citet{cas14} were used (see Table~5 in the electronic version of the Journal).
+First, effective temperatures were calculated from 2MASS photometry and
+color-temperature calibrations of \citet{ghb09} and spectroscopic temperatures
+were optimized around this value using the SMH code, by removing abundance
+trends with line excitation potential. Parameters of $\log g$ and ${\rm [Fe/H]}$
+were determined using 14 Fe I and 2-3 Fe II lines to achieve ionization balance,
+and microturbulence was calculated by removing abundance trends with reduced
+equivalent width of the lines. Estimates of the $\alpha-$enhancement were
+obtained using only the few available clean Mg, Ca and Ti (I and II) lines,
+which comprised a total of 6-8 lines per star. The abundances were measured from
+equivalent widths and the lines we used are listed in Table~5. Because Mg lines
+are strong and may be saturated, the values of ${\rm [Mg/Fe]}$ are significantly
+different than values of ${\rm [Ca/Fe]}$ and ${\rm [Ti/Fe]}$.
 
 \subsection{Proper motions}
 
@@ -451,15 +451,15 @@ parameters are listed in the notes of Table~\ref{table_abundances}.
 \colhead{(dex)}
 }
 \startdata
-rgb1 & 5680 & 3.0 & -1.95 & -0.2 & 0.6 & 0.6 \\
-rgb2 & 5450 & 2.8 & -2.02 &  0.1 & 0.6 & 0.3 \\
-rgb3 & 5700 & 3.0 & -1.95 &  0.2 & 0.3 & 0.5 \\
-rgb4 & 5500 & 2.8 & -1.95 &  0.3 & 0.6 & 0.6 \\
-rgb5 & 5720 & 3.4 & -1.90 &  0.0 & 0.7 & 0.5 
+rgb1 & 5680 & 3.2 & -2.00 & -0.12 & 0.63 & 0.69 \\
+rgb2 & 5430 & 3.3 & -1.95 &  0.06 & 0.62 & 0.47 \\
+rgb3 & 5700 & 3.1 & -1.95 &  0.23 & 0.27 & 0.46 \\
+rgb4 & 5400 & 2.8 & -1.90 &  0.24 & 0.57 & 0.42 \\
+rgb5 & 5720 & 2.9 & -1.90 & -0.14 & 0.83 & -- 
 \enddata
-\tablecomments{The uncertainty in $T_{eff}$ is $<200$ K, $<0.4$ dex for
-$\log g$, $\lesssim0.2$ dex for ${\rm [Fe/H]}$, and $\sim0.3$ dex for abundances
-of $\alpha-$elements.}
+\tablecomments{The uncertainty in $T_{eff}$ is $<200$ K, $<0.45$ dex for
+$\log g$, $\lesssim0.2$ dex for ${\rm [Fe/H]}$, and $\sim0.35$ dex for
+abundances of $\alpha-$elements.}
 \end{deluxetable}
 
 We find the stars in the Ophiuchus stream to be poor in Fe
@@ -1172,23 +1172,29 @@ s$^{-1}$. Note a good agreement between the length and width of the observed,
 \end{figure}
 
 Given an orbit, the time of disruption $t_{dis}$, and the velocity dispersion of
-the progenitor $\sigma_v$, {\em galpy} can generate a mock stream using the modeling
-framework of \citet{bov14}. Observationally, for a fixed $\sigma_v$, $t_{dis}$
-is proportional to the stream's length (i.e., older streams are longer). In
-Section~\ref{vlos}, we measured $s=0.4$ km s$^{-1}$ as the velocity dispersion
-of the stream. We find that by setting $\sigma_v$ to the same value, the {\em galpy} mock stream has a velocity dispersion $\tilde{s} \approx 0.4$ km s$^{-1} = s$. We further find that $t_{dis}\sim170$
-Myr provides a good match between the observed and mock streams (see
-Figure~\ref{observed_vs_mock_comparison}). While we do not perform an exhaustive search of the $(\sigma_v,t_{dis})$ parameter space, very different values of $\sigma_v$ or $t_{dis}$ produce values of $\tilde{s}$ or a total length that are not consistent
-with observations. This result, and the fact that there was a disk+pericenter
-passage 250 Myr ago, strongly suggest that the stream formed about 250 Myr ago
-(i.e., that the progenitor was disrupted at that time).
+the progenitor $\sigma_v$, {\em galpy} can generate a mock stream using the
+modeling framework of \citet{bov14}. Observationally, for a fixed $\sigma_v$,
+$t_{dis}$ is proportional to the stream's length (i.e., older streams are
+longer). In Section~\ref{vlos}, we measured $s=0.4$ km s$^{-1}$ as the velocity
+dispersion of the stream. We find that by setting $\sigma_v$ to the same value,
+the {\em galpy} mock stream has a velocity dispersion $\tilde{s} \approx 0.4$ km
+s$^{-1} = s$. We further find that $t_{dis}\sim170$ Myr provides a good match
+between the observed and mock streams (see
+Figure~\ref{observed_vs_mock_comparison}). While we do not perform an exhaustive
+search of the $(\sigma_v,t_{dis})$ parameter space, very different values of
+$\sigma_v$ or $t_{dis}$ produce values of $\tilde{s}$ or a total length that are
+not consistent with observations. This result, and the fact that there was a
+disk+pericenter passage 250 Myr ago, strongly suggest that the stream formed
+about 250 Myr ago (i.e., that the progenitor was disrupted at that time).
 
-As shown by \citet{sb13}, the velocity dispersion of the progenitor scales with the 
-mass of the progenitor as $\sigma_v \propto M_{dyn}^{1/3}$. In {\em galpy}, the
-model used for stream generation was calibrated using a progenitor of mass
-$M_{dyn}=2\times10^4$ $M_\sun$. The stream formed by the tidal disruption of this progenitor could be modeled with $\sigma_v=0.365$ km s$^{-1}$ \citep{bov14}. Using
-the above scaling relation and $\sigma_v = 0.4$ km s$^{-1}$, we find that the progenitor of the Ophiuchus stream
-had a mass of $M_{dyn}\sim2\times10^4$ $M_\sun$.
+As shown by \citet{sb13}, the velocity dispersion of the progenitor scales with
+the mass of the progenitor as $\sigma_v \propto M_{dyn}^{1/3}$. In {\em galpy},
+the model used for stream generation was calibrated using a progenitor of mass
+$M_{dyn}=2\times10^4$ $M_\sun$. The stream formed by the tidal disruption of
+this progenitor could be modeled with $\sigma_v=0.365$ km s$^{-1}$
+\citep{bov14}. Using the above scaling relation and $\sigma_v=0.4$ km s$^{-1}$,
+we find that the progenitor of the Ophiuchus stream had a mass of
+$M_{dyn}\sim2\times10^4$ $M_\sun$.
 
 It is important to note that {\em galpy} creates only the stream, and that stars
 associated with the progenitor are not part of the mock stream (i.e., are not
