@@ -1331,8 +1331,9 @@ of Arizona.
 \bibliographystyle{apj}
 \bibliography{ms}
 
-\clearpage
+\newpage
 
+\begin{turnpage}
 \begin{deluxetable*}{lrrrrrrrrrrr}
 \tabletypesize{\scriptsize}
 \setlength{\tabcolsep}{0.02in}
@@ -1378,6 +1379,9 @@ indicates the average DM of the stream at the position of the star, and
 the uncertainties are $68\%$ confidence limits. The proper motion in the
 galactic longitude direction, $\mu_l$, includes the $\cos b$ term.}
 \end{deluxetable*}
+\end{turnpage}
+\clearpage
+\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate 90}
 
 \end{document}
 
