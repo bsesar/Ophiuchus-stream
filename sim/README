@@ -1,0 +1,23 @@
+# Trying to end of ~center of the stream starting near apocenter
+# get_initial_condition finds an apocenter near a given time in Gyr
+# Output xyz,vxyz in gyrfalcON units
+# Earlier than 500 Myr: At 0.375 Gyr: 13.403983439,5.3143215874,9.74486280111,-46.6322869285,-7.5748009345,68.982242893
+# Earlier than 1 Gyr: 0.867188 Gyr: -3.29163834081,-3.73254759015,-16.8005893068,61.4234423285,25.2091664503,-20.1436391692
+
+# Simulate stream, this is for Rt=30 kpc
+mkking out=oph.nemo nbody=20000 W0=2. mass=10000 r_t=0.0936 WD_units=t
+
+# shift it
+snapshift oph.nemo oph_shifted.nemo rshift= vshift=
+# E.g., for 500 Myr, tstop=0.375
+snapshift oph.nemo oph_shifted.nemo rshift=13.403983439,5.3143215874,9.74486280111 vshift=-46.6322869285,-7.5748009345,68.982242893
+# E.g., for 1 Gyr tstop=0.867188
+snapshift oph.nemo oph_shifted_1Gyr.nemo rshift=-3.29163834081,-3.73254759015,-16.8005893068 vshift=61.4234423285,25.2091664503,-20.1436391692
+
+#500 Myr, use step 2**-8
+gyrfalcON in=oph_shifted.nemo out=oph_evol.nemo tstop=0.375 eps=0.003 step=0.00390625 kmax=11 Nlev=4 fac=0.01 kernel=2 accname=PowSphwCut+MiyamotoNagai+NFW accpars=0,1001.79126907,1.8,1.9#0,306770.418682,3.0,0.28#0,16.0,162.958241887
+#1 Gyr
+gyrfalcON in=oph_shifted_1Gyr.nemo out=oph_evol_1Gyr.nemo tstop=0.867188 eps=0.003 step=0.00390625 kmax=11 Nlev=4 fac=0.01 kernel=2 accname=PowSphwCut+MiyamotoNagai+NFW accpars=0,1001.79126907,1.8,1.9#0,306770.418682,3.0,0.28#0,16.0,162.958241887
+
+s2a oph_evol.nemo oph_evol.dat
+s2a oph_evol_1Gyr.nemo oph_evol_1Gyr.dat
